@@ -25,7 +25,7 @@ body {
 	width: 100%;
 	height: calc(90vh / 3);
 	font-size: 20px;
-	background-color: #aaa;
+	background-color: dimgrey;
 	color: white;
 }
 .output {
