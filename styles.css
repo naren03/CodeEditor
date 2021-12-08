@@ -4,36 +4,53 @@
 	box-sizing: border-box;
 }
 body {
-	width: 90vw;
-	height: 90vh;
+	width: 100vw;
+	height: 100vh;
 	display: flex;
-	margin: 10px;
+	flex-direction: column;
+	/* margin: 10px; */
 	overflow: hidden;
 }
 
 .editor {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	flex-direction: row;
+	/* justify-content: space-between; */
 	align-items: flex-start;
-	width: 50vw;
-	height: 90vh;
+	/* width: 60vw;
+	height: 90vh; */
+	width: 100%;
+	height: 50vh;
 }
 .html-code,
 .css-code,
 .js-code {
-	width: 100%;
-	height: calc(90vh / 3);
-	font-size: 20px;
+	/* width: 100%; */
+	/* height: calc(90vh / 3); */
+	/* font-size: 20px; */
 	background-color: dimgrey;
 	color: white;
 }
+
 .output {
 	width: 100%;
-	height: 100vh;
+	height: 60vh;
+	padding: 10px;
 }
 .output-display {
 	width: 100%;
-	height: 90vh;
+	height: 100%;
+	/* height: 90vh; */
 	border: 3px solid black;
 }
+
+/* demo */
+.pane {
+	margin: 10px;
+	height: 50%;
+	width: 90%;
+}
+/* important for shrinking property */
+/* .pane3 {
+	flex-basis: 0;
+} */

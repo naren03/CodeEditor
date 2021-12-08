@@ -4,16 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="styles.css" /><link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+</link><script src="codemirror/lib/codemirror.js"></script>
+		<link rel="stylesheet" href="codemirror/lib/codemirror.css" />
+		<link rel="stylesheet" href="codemirror/theme//dracula.css" />
+		<script src="codemirror/mode/xml/xml.js"></script>
+		<script src="codemirror/mode/css/css.js"></script>
+		<script src="codemirror/mode/javascript/javascript.js"></script>
+		<script src="codemirror/addon/edit/closetag.js"></script>
 		<title>Code Editor</title>
 	</head>
 	<body>
 		<div class="editor">
-			<textarea class="html-code"></textarea
-			><textarea class="css-code"></textarea
-			><textarea class="js-code"></textarea>
+			<div class="pane pane1">
+			<textarea class="html-code"></textarea>
+			</div>
+			<div class="pane pane2">
+			<textarea class="css-code"></textarea>
+			</div>
+			<div class="pane pane3">
+			<textarea class="js-code"></textarea>
+			</div>
 		</div>
-		<div class="output"><iframe class="output-display"></iframe></div>
+		<div class="output"><iframe id="my-output" class="output-display"></iframe></div>
+
+		<button id="download-btn">Download File</button>
+
+		<script src="./FileSaver.min.js"></script>
 		<script src="index.js"></script>
+
 	</body>
 </html>
