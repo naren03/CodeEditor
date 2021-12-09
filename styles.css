@@ -8,27 +8,20 @@ body {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	/* margin: 10px; */
 	overflow: hidden;
 }
 
 .editor {
 	display: flex;
 	flex-direction: row;
-	/* justify-content: space-between; */
 	align-items: flex-start;
-	/* width: 60vw;
-	height: 90vh; */
 	width: 100%;
-	height: 50vh;
+	height: 60vh;
+	background-color: #060606;
 }
 .html-code,
 .css-code,
 .js-code {
-	/* width: 100%; */
-	/* height: calc(90vh / 3); */
-	/* font-size: 20px; */
-	background-color: dimgrey;
 	color: white;
 }
 
@@ -40,16 +33,17 @@ body {
 .output-display {
 	width: 100%;
 	height: 100%;
-	/* height: 90vh; */
-	border: 3px solid black;
+	border: none;
 }
 
-/* demo */
+/* practice */
 .pane {
-	margin: 10px;
+	margin: 60px 10px 20px;
 	height: 50%;
 	width: 90%;
+	color: black;
 }
+
 /* important for shrinking property */
 /* .pane3 {
 	flex-basis: 0;
