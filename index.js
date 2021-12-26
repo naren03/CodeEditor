@@ -104,7 +104,48 @@ document.getElementById('download-btn').addEventListener('click', (e) => {
 	//generate Canvas
 	var canvas = document.getElementById('my-output');
 	console.log(canvas);
+
 	canvas.toBlob(function (blob) {
 		saveAs(blob, 'output.png');
 	});
+});
+
+//extra
+let shrinkBtn1 = document.getElementById('shrink-btn1');
+let shrinkBtn2 = document.getElementById('shrink-btn2');
+let shrinkBtn3 = document.getElementById('shrink-btn3');
+
+shrinkBtn1.addEventListener('click', (e) => {
+	e.preventDefault();
+	let pane = document.getElementsByClassName('pane');
+	// pane[0].style.flexBasis = '0';
+	if (pane[0].classList.contains('shrink')) {
+		pane[0].classList.remove('shrink');
+		pane[0].classList.add('expand');
+	} else {
+		pane[0].classList.remove('expand');
+		pane[0].classList.add('shrink');
+	}
+});
+shrinkBtn2.addEventListener('click', (e) => {
+	e.preventDefault();
+	let pane = document.getElementsByClassName('pane');
+	if (pane[1].classList.contains('shrink')) {
+		pane[1].classList.remove('shrink');
+		pane[1].classList.add('expand');
+	} else {
+		pane[1].classList.remove('expand');
+		pane[1].classList.add('shrink');
+	}
+});
+shrinkBtn3.addEventListener('click', (e) => {
+	e.preventDefault();
+	let pane = document.getElementsByClassName('pane');
+	if (pane[2].classList.contains('shrink')) {
+		pane[2].classList.remove('shrink');
+		pane[2].classList.add('expand');
+	} else {
+		pane[2].classList.remove('expand');
+		pane[2].classList.add('shrink');
+	}
 });
