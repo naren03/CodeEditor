@@ -122,9 +122,13 @@ shrinkBtn1.addEventListener('click', (e) => {
 	if (pane[0].classList.contains('shrink')) {
 		pane[0].classList.remove('shrink');
 		pane[0].classList.add('expand');
+
+		shrinkBtn1.innerHTML = '<i class="fas fa-compress-alt"></i>';
 	} else {
 		pane[0].classList.remove('expand');
 		pane[0].classList.add('shrink');
+
+		shrinkBtn1.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
 shrinkBtn2.addEventListener('click', (e) => {
@@ -133,9 +137,13 @@ shrinkBtn2.addEventListener('click', (e) => {
 	if (pane[1].classList.contains('shrink')) {
 		pane[1].classList.remove('shrink');
 		pane[1].classList.add('expand');
+
+		shrinkBtn2.innerHTML = '<i class="fas fa-compress-alt"></i>';
 	} else {
 		pane[1].classList.remove('expand');
 		pane[1].classList.add('shrink');
+
+		shrinkBtn2.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
 shrinkBtn3.addEventListener('click', (e) => {
@@ -144,8 +152,12 @@ shrinkBtn3.addEventListener('click', (e) => {
 	if (pane[2].classList.contains('shrink')) {
 		pane[2].classList.remove('shrink');
 		pane[2].classList.add('expand');
+
+		shrinkBtn3.innerHTML = '<i class="fas fa-compress-alt"></i>';
 	} else {
 		pane[2].classList.remove('expand');
 		pane[2].classList.add('shrink');
+
+		shrinkBtn3.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
