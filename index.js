@@ -4,10 +4,12 @@ const jsCode = document.querySelector('.js-code');
 const output = document.querySelector('.output-display');
 let htmlData, cssData, jsData;
 
+let themeStyle = 'dracula';
+
 //HTML EDITOR
 let editor1 = CodeMirror.fromTextArea(htmlCode, {
 	mode: 'text/html',
-	theme: 'dracula',
+	theme: `${themeStyle}`,
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
@@ -35,7 +37,7 @@ CodeMirror.on(editor1, 'change', () => {
 //CSS EDITOR
 let editor2 = CodeMirror.fromTextArea(cssCode, {
 	mode: 'css',
-	theme: 'dracula',
+	theme: `${themeStyle}`,
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
@@ -53,7 +55,7 @@ CodeMirror.on(editor2, 'change', () => {
 //JS EDITOR
 let editor3 = CodeMirror.fromTextArea(jsCode, {
 	mode: 'javascript',
-	theme: 'dracula',
+	theme: `${themeStyle}`,
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
@@ -71,9 +73,13 @@ CodeMirror.on(editor3, 'change', () => {
 //Download Functionality
 document.getElementById('download-btn').addEventListener('click', (e) => {
 	e.preventDefault();
+
+	//custom file name
+	var userFileName = document.getElementById('userFileName').value;
+
 	//generate File
 	var text = htmlData;
-	var filename = 'index.html';
+	var filename = `${userFileName}.html`;
 
 	//create blob
 	var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
@@ -83,7 +89,7 @@ document.getElementById('download-btn').addEventListener('click', (e) => {
 
 	//generate File
 	text = cssData;
-	filename = 'styles.css';
+	filename = `${userFileName}.css`;
 
 	//create blob
 	blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
@@ -93,21 +99,13 @@ document.getElementById('download-btn').addEventListener('click', (e) => {
 
 	//generate File
 	text = jsData;
-	filename = 'index.js';
+	filename = `${userFileName}.js`;
 
 	//create blob
 	blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
 
 	//genarte file download(saveas)
 	saveAs(blob, filename);
-
-	//generate Canvas
-	var canvas = document.getElementById('my-output');
-	console.log(canvas);
-
-	canvas.toBlob(function (blob) {
-		saveAs(blob, 'output.png');
-	});
 });
 
 //extra
@@ -161,3 +159,13 @@ shrinkBtn3.addEventListener('click', (e) => {
 		shrinkBtn3.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
+
+//Dark Mode and Light Mode
+const themeType = document.getElementById('theme');
+
+themeType.addEventListener('click', () => {
+	console.log('afdaf');
+	themeStyle = '3024-day';
+});
+
+//Help Icon
