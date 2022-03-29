@@ -4,7 +4,34 @@ const jsCode = document.querySelector('.js-code');
 const output = document.querySelector('.output-display');
 let htmlData, cssData, jsData;
 
-let themeStyle = 'dracula';
+let themeStyle = '3024-day';
+
+//On Load
+document.addEventListener('DOMContentLoaded', () => {
+	//getting data from local storage and running if page reloads
+	htmlData = JSON.parse(localStorage.getItem('code')).html;
+	cssData = JSON.parse(localStorage.getItem('code')).css;
+	jsData = JSON.parse(localStorage.getItem('code')).js;
+
+	// console.log(htmlData + cssData + jsData);
+});
+
+//Main function to execute code
+function run() {
+	output.contentDocument.body.innerHTML =
+		htmlData + '<style>' + cssData + '</style>';
+	output.contentWindow.eval(jsData);
+
+	//Data to store in local Storage
+	const localData = {
+		html: htmlData,
+		css: cssData,
+		js: jsData,
+	};
+
+	//Storing data in Local Storage
+	localStorage.setItem('code', JSON.stringify(localData));
+}
 
 //HTML EDITOR
 let editor1 = CodeMirror.fromTextArea(htmlCode, {
@@ -14,13 +41,6 @@ let editor1 = CodeMirror.fromTextArea(htmlCode, {
 	autoCloseTags: true,
 	lineWrapping: true,
 });
-// editor1.setSize('550', '250');
-
-function run() {
-	output.contentDocument.body.innerHTML =
-		htmlData + '<style>' + cssData + '</style>';
-	output.contentWindow.eval(jsData);
-}
 
 //When editors value changes
 CodeMirror.on(editor1, 'change', () => {
@@ -30,10 +50,6 @@ CodeMirror.on(editor1, 'change', () => {
 	run();
 });
 
-// htmlCode.addEventListener('keyup', run);
-// cssCode.addEventListener('keyup', run);
-// jsCode.addEventListener('keyup', run);
-
 //CSS EDITOR
 let editor2 = CodeMirror.fromTextArea(cssCode, {
 	mode: 'css',
@@ -42,7 +58,6 @@ let editor2 = CodeMirror.fromTextArea(cssCode, {
 	autoCloseTags: true,
 	lineWrapping: true,
 });
-// editor2.setSize('550', '250');
 
 //When editors value changes
 CodeMirror.on(editor2, 'change', () => {
@@ -60,7 +75,6 @@ let editor3 = CodeMirror.fromTextArea(jsCode, {
 	autoCloseTags: true,
 	lineWrapping: true,
 });
-// editor3.setSize('550', '250');
 
 //When editors value changes
 CodeMirror.on(editor3, 'change', () => {
@@ -160,12 +174,41 @@ shrinkBtn3.addEventListener('click', (e) => {
 	}
 });
 
-//Dark Mode and Light Mode
-const themeType = document.getElementById('theme');
+//Dark mode and Light Mode Functionality
+document.getElementById('theme').addEventListener('click', () => {
+	// if light mode is on
+	if (document.getElementById('theme').classList.contains('light')) {
+		for (let i = 0; i < 3; i++) {
+			document
+				.querySelectorAll('.CodeMirror')
+				[i].classList.remove('cm-s-3024-day');
+			document.querySelectorAll('.CodeMirror')[i].classList.add('cm-s-dracula');
 
-themeType.addEventListener('click', () => {
-	console.log('afdaf');
-	themeStyle = '3024-day';
+			document.querySelectorAll('h4')[i].style.backgroundColor = '#282a36';
+			document.querySelectorAll('h4')[i].style.color = '#f7f7f7';
+		}
+
+		document.getElementById('theme').children[0].src = 'img/dark-mode.png';
+		document.getElementById('theme').classList.remove('light');
+		document.getElementById('theme').classList.add('dark');
+	}
+
+	//if dark mode is on
+	else {
+		for (let i = 0; i < 3; i++) {
+			document
+				.querySelectorAll('.CodeMirror')
+				[i].classList.remove('cm-s-dracula');
+			document
+				.querySelectorAll('.CodeMirror')
+				[i].classList.add('cm-s-3024-day');
+
+			document.querySelectorAll('h4')[i].style.backgroundColor = '#f7f7f7';
+			document.querySelectorAll('h4')[i].style.color = '#282a36';
+		}
+
+		document.getElementById('theme').children[0].src = 'img/light-mode.png';
+		document.getElementById('theme').classList.remove('dark');
+		document.getElementById('theme').classList.add('light');
+	}
 });
-
-//Help Icon
