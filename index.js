@@ -8,12 +8,17 @@ let themeStyle = '3024-day';
 
 //On Load
 document.addEventListener('DOMContentLoaded', () => {
+	// finding localStorage
+	// editor1.doc.children[0].lines[0].text = htmlData;
+	// editor2.doc.children[0].lines[0].text = cssData;
+	// editor3.doc.children[0].lines[0].text = jsData;
+
+	// console.log(editor1.doc.children[0].lines[0].text);
 	//getting data from local storage and running if page reloads
 	htmlData = JSON.parse(localStorage.getItem('code')).html;
 	cssData = JSON.parse(localStorage.getItem('code')).css;
 	jsData = JSON.parse(localStorage.getItem('code')).js;
-
-	// console.log(htmlData + cssData + jsData);
+	console.log(htmlData + cssData + jsData);
 });
 
 //Main function to execute code
@@ -176,6 +181,12 @@ shrinkBtn3.addEventListener('click', (e) => {
 
 //Dark mode and Light Mode Functionality
 document.getElementById('theme').addEventListener('click', () => {
+	// Call Change Mode Function
+	changeMode();
+});
+
+// Change Mode Function
+function changeMode() {
 	// if light mode is on
 	if (document.getElementById('theme').classList.contains('light')) {
 		for (let i = 0; i < 3; i++) {
@@ -211,4 +222,60 @@ document.getElementById('theme').addEventListener('click', () => {
 		document.getElementById('theme').classList.remove('dark');
 		document.getElementById('theme').classList.add('light');
 	}
+}
+// restore pages
+// document.getElementById('helpBtn').addEventListener('click', () => {
+// 	//getting data from local storage and running if page reloads
+// 	htmlData = JSON.parse(localStorage.getItem('code')).html;
+// 	cssData = JSON.parse(localStorage.getItem('code')).css;
+// 	jsData = JSON.parse(localStorage.getItem('code')).js;
+
+// 	console.log(editor1);
+// 	editor1.display.view[0].line.parent.lines[0].text = htmlData;
+// 	editor2.display.view[0].line.parent.lines[0].text = cssData;
+// 	editor3.display.view[0].line.parent.lines[0].text = jsData;
+// });
+
+// ShortCut Keys
+
+//Array to store Keys Pressed
+let keyArray = [];
+
+document.addEventListener('keydown', (e) => {
+	keyArray.push(e.key);
+	console.log(e.key);
+	if (keyArray.length == 1) {
+		if (checkDownKey()) {
+		} else {
+			keyArray = [];
+		}
+	}
+	// if valid keys are pressed
+	else if (keyArray.length == 2) {
+		// For Tool Change T
+		if (checkDownKey() && checkTKey()) {
+			// Change Theme
+			console.log('Change Theme');
+			// Call Change Theme Function
+			changeMode();
+
+			keyArray = [];
+		}
+
+		keyArray = [];
+	} else {
+		keyArray = [];
+	}
 });
+
+// Check Down Arrow Key
+function checkDownKey() {
+	if (keyArray[0] === 'ArrowDown') return 1;
+	else return 0;
+}
+
+// Check T Key
+function checkTKey() {
+	if (keyArray[1] === 't' || keyArray[1] === 'T') return 1;
+	else return 0;
+}
