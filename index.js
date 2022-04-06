@@ -93,40 +93,50 @@ CodeMirror.on(editor3, 'change', () => {
 document.getElementById('download-btn').addEventListener('click', (e) => {
 	e.preventDefault();
 
+	//Call Download Function
+	downloadFile();
+});
+
+//Download Function
+
+function downloadFile() {
 	//custom file name
 	var userFileName = document.getElementById('userFileName').value;
 
-	//generate File
-	var text = htmlData;
-	var filename = `${userFileName}.html`;
+	if (userFileName !== '') {
+		//generate File
+		var text = htmlData;
+		var filename = `${userFileName}.html`;
 
-	//create blob
-	var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+		//create blob
+		var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
 
-	//genarte file download(saveas)
-	saveAs(blob, filename);
+		//genarte file download(saveas)
+		saveAs(blob, filename);
 
-	//generate File
-	text = cssData;
-	filename = `${userFileName}.css`;
+		//generate File
+		text = cssData;
+		filename = `${userFileName}.css`;
 
-	//create blob
-	blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+		//create blob
+		blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
 
-	//genarte file download(saveas)
-	saveAs(blob, filename);
+		//genarte file download(saveas)
+		saveAs(blob, filename);
 
-	//generate File
-	text = jsData;
-	filename = `${userFileName}.js`;
+		//generate File
+		text = jsData;
+		filename = `${userFileName}.js`;
 
-	//create blob
-	blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+		//create blob
+		blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
 
-	//genarte file download(saveas)
-	saveAs(blob, filename);
-});
-
+		//genarte file download(saveas)
+		saveAs(blob, filename);
+	} else {
+		alert('File Name is Empty !!!');
+	}
+}
 //extra
 let shrinkBtn1 = document.getElementById('shrink-btn1');
 let shrinkBtn2 = document.getElementById('shrink-btn2');
@@ -244,6 +254,7 @@ let keyArray = [];
 document.addEventListener('keydown', (e) => {
 	keyArray.push(e.key);
 	console.log(e.key);
+
 	if (keyArray.length == 1) {
 		if (checkDownKey()) {
 		} else {
@@ -258,6 +269,23 @@ document.addEventListener('keydown', (e) => {
 			console.log('Change Theme');
 			// Call Change Theme Function
 			changeMode();
+
+			keyArray = [];
+		}
+
+		// For Download D
+		if (checkDownKey() && checkDKey()) {
+			//Download
+			console.log('Download');
+			//Call Download Function
+			downloadFile();
+			keyArray = [];
+		}
+
+		// For Download C
+		if (checkDownKey() && checkCKey()) {
+			//Clear
+			console.log('Clear');
 
 			keyArray = [];
 		}
@@ -277,5 +305,17 @@ function checkDownKey() {
 // Check T Key
 function checkTKey() {
 	if (keyArray[1] === 't' || keyArray[1] === 'T') return 1;
+	else return 0;
+}
+
+// Check D Key
+function checkDKey() {
+	if (keyArray[1] === 'd' || keyArray[1] === 'D') return 1;
+	else return 0;
+}
+
+// Check C Key
+function checkCKey() {
+	if (keyArray[1] === 'c' || keyArray[1] === 'C') return 1;
 	else return 0;
 }

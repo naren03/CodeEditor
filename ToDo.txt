@@ -1,5 +1,3 @@
-2.dark mode light mode
 3.side view top view
 4.error handling
-5.Key board Shortcuts
 6.Local Storage
