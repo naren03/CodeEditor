@@ -6,20 +6,20 @@ let htmlData, cssData, jsData;
 
 let themeStyle = '3024-day';
 
-//On Load
-document.addEventListener('DOMContentLoaded', () => {
-	// finding localStorage
-	// editor1.doc.children[0].lines[0].text = htmlData;
-	// editor2.doc.children[0].lines[0].text = cssData;
-	// editor3.doc.children[0].lines[0].text = jsData;
+// //On Load
+// document.addEventListener('DOMContentLoaded', () => {
+// 	// finding localStorage
+// 	// editor1.doc.children[0].lines[0].text = htmlData;
+// 	// editor2.doc.children[0].lines[0].text = cssData;
+// 	// editor3.doc.children[0].lines[0].text = jsData;
 
-	// console.log(editor1.doc.children[0].lines[0].text);
-	//getting data from local storage and running if page reloads
-	htmlData = JSON.parse(localStorage.getItem('code')).html;
-	cssData = JSON.parse(localStorage.getItem('code')).css;
-	jsData = JSON.parse(localStorage.getItem('code')).js;
-	console.log(htmlData + cssData + jsData);
-});
+// 	// console.log(editor1.doc.children[0].lines[0].text);
+// 	//getting data from local storage and running if page reloads
+// 	htmlData = JSON.parse(localStorage.getItem('code')).html;
+// 	cssData = JSON.parse(localStorage.getItem('code')).css;
+// 	jsData = JSON.parse(localStorage.getItem('code')).js;
+// 	console.log(htmlData + cssData + jsData);
+// });
 
 //Main function to execute code
 function run() {
@@ -28,14 +28,14 @@ function run() {
 	output.contentWindow.eval(jsData);
 
 	//Data to store in local Storage
-	const localData = {
-		html: htmlData,
-		css: cssData,
-		js: jsData,
-	};
+	// const localData = {
+	// 	html: htmlData,
+	// 	css: cssData,
+	// 	js: jsData,
+	// };
 
 	//Storing data in Local Storage
-	localStorage.setItem('code', JSON.stringify(localData));
+	// localStorage.setItem('code', JSON.stringify(localData));
 }
 
 //HTML EDITOR
@@ -45,6 +45,7 @@ let editor1 = CodeMirror.fromTextArea(htmlCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
+	placeholder: 'Type HTML Here................',
 });
 
 //When editors value changes
@@ -62,6 +63,7 @@ let editor2 = CodeMirror.fromTextArea(cssCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
+	placeholder: 'Type CSS Here................',
 });
 
 //When editors value changes
@@ -79,6 +81,7 @@ let editor3 = CodeMirror.fromTextArea(jsCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
+	placeholder: 'Type JS Here................',
 });
 
 //When editors value changes
@@ -98,7 +101,6 @@ document.getElementById('download-btn').addEventListener('click', (e) => {
 });
 
 //Download Function
-
 function downloadFile() {
 	//custom file name
 	var userFileName = document.getElementById('userFileName').value;
@@ -137,11 +139,12 @@ function downloadFile() {
 		alert('File Name is Empty !!!');
 	}
 }
-//extra
+//Minimizing and Maximizing Buttons
 let shrinkBtn1 = document.getElementById('shrink-btn1');
 let shrinkBtn2 = document.getElementById('shrink-btn2');
 let shrinkBtn3 = document.getElementById('shrink-btn3');
 
+// HTML Shrink
 shrinkBtn1.addEventListener('click', (e) => {
 	e.preventDefault();
 	let pane = document.getElementsByClassName('pane');
@@ -158,6 +161,8 @@ shrinkBtn1.addEventListener('click', (e) => {
 		shrinkBtn1.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
+
+// CSS Shrink
 shrinkBtn2.addEventListener('click', (e) => {
 	e.preventDefault();
 	let pane = document.getElementsByClassName('pane');
@@ -173,6 +178,8 @@ shrinkBtn2.addEventListener('click', (e) => {
 		shrinkBtn2.innerHTML = '<i class="fas fa-expand-alt"></i>';
 	}
 });
+
+// JS Shrink
 shrinkBtn3.addEventListener('click', (e) => {
 	e.preventDefault();
 	let pane = document.getElementsByClassName('pane');
@@ -247,7 +254,6 @@ function changeMode() {
 // });
 
 // ShortCut Keys
-
 //Array to store Keys Pressed
 let keyArray = [];
 
