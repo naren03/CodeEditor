@@ -1,3 +1,1 @@
-1.side view top view
-2.Clear Function
-5.Help Button
+2.Help Button

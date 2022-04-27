@@ -80,42 +80,42 @@
 			</ul>
 		</div>
 
+		<div class="wrapper">
+			<!-- Code Editor -->
+			<div class="editor ">
 
-		<!-- Code Editor -->
-		<div class="editor ">
+				<!-- HTML EDITOR-->
+				<div class="pane pane1" data-toggle="tooltip" data-placement="bottom" title="HTML">
+					<h4><i class="fab fa-html5 html"></i>HTML</h4>
+					<span class="min-btn" id="shrink-btn1" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
+							class="fas fa-compress-alt"></i></span>
+					<textarea id="html" class="html-code"></textarea>
+				</div>
 
-			<!-- HTML EDITOR-->
-			<div class="pane pane1" data-toggle="tooltip" data-placement="bottom" title="HTML">
-				<h4><i class="fab fa-html5 html"></i>HTML</h4>
-				<span class="min-btn" id="shrink-btn1" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
-						class="fas fa-compress-alt"></i></span>
-				<textarea id="html" class="html-code"></textarea>
+				<!-- CSS EDITOR-->
+				<div class="pane pane2" data-toggle="tooltip" data-placement="bottom" title="CSS">
+					<h4><i class="fab fa-css3-alt css"></i>CSS</h4>
+					<span class="min-btn" id="shrink-btn2" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
+							class="fas fa-compress-alt"></i></span>
+					<textarea class="css-code"></textarea>
+				</div>
+
+				<!-- JS EDITOR -->
+				<div class="pane pane3" data-toggle="tooltip" data-placement="bottom" title="JS">
+					<h4 id="jsError"><i class="fab fa-js js "></i>JS</h4>
+					<i id="bug" class="fa-solid fa-bug " data-toggle="tooltip" data-placement="bottom" title="Bug"></i>
+					<span class="min-btn" id="shrink-btn3" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
+							class="fas fa-compress-alt"></i></span>
+					<textarea class="js-code"></textarea>
+				</div>
 			</div>
 
-			<!-- CSS EDITOR-->
-			<div class="pane pane2" data-toggle="tooltip" data-placement="bottom" title="CSS">
-				<h4><i class="fab fa-css3-alt css"></i>CSS</h4>
-				<span class="min-btn" id="shrink-btn2" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
-						class="fas fa-compress-alt"></i></span>
-				<textarea class="css-code"></textarea>
+			<!-- Output -->
+			<div class="output" data-toggle="tooltip" data-placement="bottom" title="Output"><iframe id="my-output"
+					class="output-display"></iframe>
 			</div>
 
-			<!-- JS EDITOR -->
-			<div class="pane pane3" data-toggle="tooltip" data-placement="bottom" title="JS">
-				<h4 id="jsError"><i class="fab fa-js js "></i>JS</h4>
-				<i id="bug" class="fa-solid fa-bug " data-toggle="tooltip" data-placement="bottom" title="Bug"></i>
-				<span class="min-btn" id="shrink-btn3" data-toggle="tooltip" data-placement="bottom" title="Min/Max"><i
-						class="fas fa-compress-alt"></i></span>
-				<textarea class="js-code"></textarea>
-			</div>
 		</div>
-
-		<!-- Output -->
-		<div class="output" data-toggle="tooltip" data-placement="bottom" title="Output"><iframe id="my-output"
-				class="output-display"></iframe>
-		</div>
-
-
 		<!-- File Saver Library -->
 		<script src="./FileSaver.min.js"></script>
 		<script src="index.js"></script>

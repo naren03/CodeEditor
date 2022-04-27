@@ -182,3 +182,29 @@ span.min-btn:hover {
 #bug.showBug {
 	visibility: visible;
 }
+
+/* Side View */
+
+.editor.side {
+	flex-direction: column;
+	width: 60%;
+	height: 180vh;
+}
+.wrapper.side {
+	display: flex;
+	flex-direction: row;
+}
+.output.side {
+	width: 40%;
+	height: 90vh;
+	position: sticky;
+	top: 10vh;
+}
+body.side {
+	overflow-y: scroll;
+}
+.navigation-bar.side {
+	z-index: 10;
+	position: sticky;
+	top: 0;
+}

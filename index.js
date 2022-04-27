@@ -265,7 +265,7 @@ document.addEventListener('keydown', (e) => {
 		if (checkDownKey() && checkCKey()) {
 			//Clear
 			console.log('Clear');
-
+			location.reload();
 			keyArray = [];
 		}
 
@@ -298,3 +298,35 @@ function checkCKey() {
 	if (keyArray[1] === 'c' || keyArray[1] === 'C') return 1;
 	else return 0;
 }
+
+// Top View Side View Functionality
+
+const sideViewBtn = document.getElementById('side-view');
+const topViewBtn = document.getElementById('top-view');
+
+// Side View
+sideViewBtn.addEventListener('click', () => {
+	console.log('Side View');
+
+	document.getElementsByClassName('editor')[0].classList.add('side');
+	document.getElementsByClassName('wrapper')[0].classList.add('side');
+	document.getElementsByClassName('output')[0].classList.add('side');
+	document.getElementsByClassName('navigation-bar')[0].classList.add('side');
+	document.body.style.overflowY = 'scroll';
+	sideViewBtn.style.backgroundColor = 'gray';
+	topViewBtn.style.backgroundColor = 'black';
+});
+
+// Top View
+topViewBtn.addEventListener('click', () => {
+	console.log('Top View');
+
+	document.getElementsByClassName('editor')[0].classList.remove('side');
+	document.getElementsByClassName('wrapper')[0].classList.remove('side');
+	document.getElementsByClassName('output')[0].classList.remove('side');
+	document.getElementsByClassName('navigation-bar')[0].classList.remove('side');
+	document.body.style.overflow = 'hidden';
+
+	topViewBtn.style.backgroundColor = 'gray';
+	sideViewBtn.style.backgroundColor = 'black';
+});
