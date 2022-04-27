@@ -116,6 +116,7 @@ h4 {
 	padding: 20px;
 	display: inline-block;
 	background-color: #f7f7f7;
+	transition: background-color 0.4s ease-in-out;
 }
 
 span.min-btn {
@@ -167,4 +168,17 @@ span.min-btn:hover {
 	width: 100%;
 	height: 100%;
 	border: none;
+}
+
+/* Error Handling */
+
+#bug {
+	margin: 0 0 0 10px;
+	color: rgb(255, 0, 0);
+	visibility: hidden;
+	font-size: 1.5rem;
+	transition: visibility 0.5s ease-in-out;
+}
+#bug.showBug {
+	visibility: visible;
 }

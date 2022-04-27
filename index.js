@@ -6,36 +6,21 @@ let htmlData, cssData, jsData;
 
 let themeStyle = '3024-day';
 
-// //On Load
-// document.addEventListener('DOMContentLoaded', () => {
-// 	// finding localStorage
-// 	// editor1.doc.children[0].lines[0].text = htmlData;
-// 	// editor2.doc.children[0].lines[0].text = cssData;
-// 	// editor3.doc.children[0].lines[0].text = jsData;
-
-// 	// console.log(editor1.doc.children[0].lines[0].text);
-// 	//getting data from local storage and running if page reloads
-// 	htmlData = JSON.parse(localStorage.getItem('code')).html;
-// 	cssData = JSON.parse(localStorage.getItem('code')).css;
-// 	jsData = JSON.parse(localStorage.getItem('code')).js;
-// 	console.log(htmlData + cssData + jsData);
-// });
-
 //Main function to execute code
 function run() {
-	output.contentDocument.body.innerHTML =
-		htmlData + '<style>' + cssData + '</style>';
-	output.contentWindow.eval(jsData);
+	const bugIcon = document.getElementById('bug');
 
-	//Data to store in local Storage
-	// const localData = {
-	// 	html: htmlData,
-	// 	css: cssData,
-	// 	js: jsData,
-	// };
+	try {
+		output.contentDocument.body.innerHTML =
+			htmlData + '<style>' + cssData + '</style>';
+		output.contentWindow.eval(jsData);
 
-	//Storing data in Local Storage
-	// localStorage.setItem('code', JSON.stringify(localData));
+		if (bugIcon.classList.contains('showBug'))
+			bugIcon.classList.remove('showBug');
+	} catch (e) {
+		console.log('Error !!!');
+		bugIcon.classList.add('showBug');
+	}
 }
 
 //HTML EDITOR
@@ -45,7 +30,7 @@ let editor1 = CodeMirror.fromTextArea(htmlCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
-	placeholder: 'Type HTML Here................',
+	placeholder: 'Type HTML Here...',
 });
 
 //When editors value changes
@@ -63,7 +48,7 @@ let editor2 = CodeMirror.fromTextArea(cssCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
-	placeholder: 'Type CSS Here................',
+	placeholder: 'Type CSS Here...',
 });
 
 //When editors value changes
@@ -81,7 +66,7 @@ let editor3 = CodeMirror.fromTextArea(jsCode, {
 	lineNumbers: true,
 	autoCloseTags: true,
 	lineWrapping: true,
-	placeholder: 'Type JS Here................',
+	placeholder: 'Type JS Here...',
 });
 
 //When editors value changes
@@ -148,7 +133,7 @@ let shrinkBtn3 = document.getElementById('shrink-btn3');
 shrinkBtn1.addEventListener('click', (e) => {
 	e.preventDefault();
 	let pane = document.getElementsByClassName('pane');
-	// pane[0].style.flexBasis = '0';
+
 	if (pane[0].classList.contains('shrink')) {
 		pane[0].classList.remove('shrink');
 		pane[0].classList.add('expand');
@@ -240,18 +225,6 @@ function changeMode() {
 		document.getElementById('theme').classList.add('light');
 	}
 }
-// restore pages
-// document.getElementById('helpBtn').addEventListener('click', () => {
-// 	//getting data from local storage and running if page reloads
-// 	htmlData = JSON.parse(localStorage.getItem('code')).html;
-// 	cssData = JSON.parse(localStorage.getItem('code')).css;
-// 	jsData = JSON.parse(localStorage.getItem('code')).js;
-
-// 	console.log(editor1);
-// 	editor1.display.view[0].line.parent.lines[0].text = htmlData;
-// 	editor2.display.view[0].line.parent.lines[0].text = cssData;
-// 	editor3.display.view[0].line.parent.lines[0].text = jsData;
-// });
 
 // ShortCut Keys
 //Array to store Keys Pressed
@@ -259,7 +232,7 @@ let keyArray = [];
 
 document.addEventListener('keydown', (e) => {
 	keyArray.push(e.key);
-	console.log(e.key);
+	// console.log(e.key);
 
 	if (keyArray.length == 1) {
 		if (checkDownKey()) {
